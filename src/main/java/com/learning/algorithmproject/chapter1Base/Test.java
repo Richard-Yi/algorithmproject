@@ -12,7 +12,8 @@ import java.util.Map;
 public class Test {
 
     public static void main(String[] args) {
-        Map<String, String> map = new HashMap<>();
-        map.put("tets","1");
+        double[][] doubles = new double[4][6];
+        System.out.println(doubles[0][0 ]);
     }
+
 }
