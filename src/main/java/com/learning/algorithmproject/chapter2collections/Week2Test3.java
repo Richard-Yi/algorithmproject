@@ -1,4 +1,4 @@
-package com.learning.algorithmproject.chapter1Base;
+package com.learning.algorithmproject.chapter2collections;
 
 /**
  * @author Richard_yyf
