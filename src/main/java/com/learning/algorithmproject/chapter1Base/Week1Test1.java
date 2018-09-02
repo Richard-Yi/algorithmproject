@@ -78,6 +78,7 @@ public class Week1Test1 {
 
     /**
      * 在线处理
+     *
      * @param nums
      * @param k
      * @return
@@ -85,7 +86,7 @@ public class Week1Test1 {
     private static int max_sub3(int[] nums, int k) {
         int maxSum = 0;
         int thisSum = 0;
-        for (int i=0; i<k; i++) {
+        for (int i = 0; i < k; i++) {
             thisSum += nums[i];
             if (thisSum > maxSum) {
                 maxSum = thisSum;
@@ -156,42 +157,39 @@ public class Week1Test1 {
     }
 
 
-
 }
 /**
  * 提交PTA格式
- public class Week1Test1 {
-
-
-    public static void main(String[] args) {
-        int i, k;
-        int[] nums = new int[10];
-        Scanner in = new Scanner(System.in);
-        //输入序列的长度
-        k = in.nextInt();
-        //输入序列
-        for (i = 0; i < k; i++) {
-            nums[i] = in.nextInt();
-        }
-        System.out.println("The sum of biggest row is:" + max_sub3(nums, k));
-    }
-
-    private static int max_sub3(int[] nums, int k) {
-        int maxSum = 0;
-        int thisSum = 0;
-        for (int i=0; i<k; i++) {
-            thisSum += nums[i];
-            if (thisSum > maxSum) {
-                maxSum = thisSum;
-            }
-            // 如果当前和为负数，则从下一个位置重新开始计算子列和
-            if (thisSum < 0) {
-                thisSum = 0;
-            }
-        }
-        return maxSum;
-    }
-}
-
-
+ * public class Week1Test1 {
+ * <p>
+ * <p>
+ * public static void main(String[] args) {
+ * int i, k;
+ * int[] nums = new int[10];
+ * Scanner in = new Scanner(System.in);
+ * //输入序列的长度
+ * k = in.nextInt();
+ * //输入序列
+ * for (i = 0; i < k; i++) {
+ * nums[i] = in.nextInt();
+ * }
+ * System.out.println("The sum of biggest row is:" + max_sub3(nums, k));
+ * }
+ * <p>
+ * private static int max_sub3(int[] nums, int k) {
+ * int maxSum = 0;
+ * int thisSum = 0;
+ * for (int i=0; i<k; i++) {
+ * thisSum += nums[i];
+ * if (thisSum > maxSum) {
+ * maxSum = thisSum;
+ * }
+ * // 如果当前和为负数，则从下一个位置重新开始计算子列和
+ * if (thisSum < 0) {
+ * thisSum = 0;
+ * }
+ * }
+ * return maxSum;
+ * }
+ * }
  */
