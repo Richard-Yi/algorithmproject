@@ -93,5 +93,7 @@ public static long pow(long x, int n) {
 }
 ```
 
+# 小结
 
+本章对如何分析程序的复杂性给出了一些提示。算是算法之旅的入门第一步吧。
   

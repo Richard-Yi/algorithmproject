@@ -1,6 +1,7 @@
 package com.learning.algorithmproject.chapter2collections;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 
@@ -30,7 +31,7 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
         doClear();
     }
 
-    public void doClear() {
+    private void doClear() {
         theSize = 0;
         ensureCapacity(DEFAULT_CAPACITY);
     }
@@ -47,16 +48,13 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
     }
 
     public AnyType get(int index) {
-
         if (index < 0 || index >= size()) {
             throw new ArrayIndexOutOfBoundsException();
         }
-
         return theItems[index];
     }
 
     public AnyType set(int index, AnyType newVal) {
-
         if (index < 0 || index >= size()) {
             throw new ArrayIndexOutOfBoundsException();
         }
@@ -78,14 +76,14 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
         }
         // 将 index 后面的子列往后移一位 从最后一位开始
         for (int i = size(); i > index; i++) {
-            theItems[i] = theItems[i-1];
+            theItems[i] = theItems[i - 1];
         }
         // index 位置插入 x
         theItems[index] = x;
         theSize++;
     }
 
-    public AnyType remove(int index) {
+    private AnyType remove(int index) {
         AnyType removeItem = theItems[index];
         // 要将 index 后面的子列往前移一位 从index位开始
         for (int i = index; i < size() - 1; i++) {
@@ -136,12 +134,15 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
 
         @Override
         public AnyType next() {
-            return null;
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            return theItems[current++];
         }
 
         @Override
         public void remove() {
-
+            MyArrayList.this.remove(--current);
         }
     }
 
