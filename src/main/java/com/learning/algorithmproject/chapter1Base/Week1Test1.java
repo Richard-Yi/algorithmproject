@@ -26,13 +26,13 @@ public class Week1Test1 {
      */
     public static void main(String[] args) {
         int i, k;
-        int[] nums = new int[10];
         Scanner in = new Scanner(System.in);
         //输入序列的长度
         System.out.println("please input a number");
         k = in.nextInt();
         //输入序列
         System.out.println("please input the numbers");
+        int[] nums = new int[k];
         for (i = 0; i < k; i++) {
             nums[i] = in.nextInt();
         }
@@ -40,8 +40,8 @@ public class Week1Test1 {
         for (i = 0; i < k; i++) {
             System.out.print(nums[i] + " ");
         }
-
-        System.out.println("The sum of biggest row is:" + max_sub3(nums, k));
+        in.close();
+        System.out.println("The sum of biggest row is:" + max_sub3(nums));
     }
 
     /**
@@ -80,13 +80,12 @@ public class Week1Test1 {
      * 在线处理
      *
      * @param nums
-     * @param k
      * @return
      */
-    private static int max_sub3(int[] nums, int k) {
+    private static int max_sub3(int[] nums) {
         int maxSum = 0;
         int thisSum = 0;
-        for (int i = 0; i < k; i++) {
+        for (int i = 0; i < nums.length; i++) {
             thisSum += nums[i];
             if (thisSum > maxSum) {
                 maxSum = thisSum;

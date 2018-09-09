@@ -38,7 +38,7 @@ public class Week1Test2 {
         }
         System.out.println("the number row is:");
         for (i = 0; i < k; i++) {
-            System.out.print(nums[i] + " ");
+            System.out.println(nums[i] + " ");
         }
 
         max_sub(nums, k);
@@ -52,14 +52,15 @@ public class Week1Test2 {
      * @param k
      */
     private static void max_sub(int[] nums, int k) {
-        int maxSum = 0;
+        int maxSum = nums[0];
         int thisSum = 0;
-        int left = nums[0], right = nums[k - 1];
+        int left = nums[0], right = nums[k-1];
         int thisLeft = nums[0], thisRight;
         for (int i = 0; i < k; i++) {
             thisSum += nums[i];
             thisRight = nums[i];
-            if (thisSum > maxSum) {
+            // thisSum > 0 是针对全是负数的情况
+            if (thisSum > maxSum && thisSum >= 0) {
                 maxSum = thisSum;
                 right = thisRight;
                 left = thisLeft;
@@ -72,7 +73,10 @@ public class Week1Test2 {
                 thisSum = 0;
             }
         }
-        System.out.println("The sum of biggest row is:" + maxSum);
-        System.out.println(left + " " + right);
+        // 排除全是负数的情况
+        if (maxSum < 0) {
+            maxSum = 0;
+        }
+        System.out.println(maxSum + " " + left + " " + right);
     }
 }
