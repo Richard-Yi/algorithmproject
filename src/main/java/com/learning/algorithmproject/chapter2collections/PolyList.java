@@ -2,6 +2,7 @@ package com.learning.algorithmproject.chapter2collections;
 
 /**
  * 用链表表示多项式
+ *
  * @author Richard_yyf
  * @Date 2018/9/11
  * @Description
@@ -31,11 +32,17 @@ public class PolyList {
     }
 
     public class PolyNode {
-        /** 系数 */
+        /**
+         * 系数
+         */
         public int coef;
-        /** 指数 */
+        /**
+         * 指数
+         */
         public int expn;
-        /** 下一个节点 */
+        /**
+         * 下一个节点
+         */
         public PolyNode next;
 
         public PolyNode() {
@@ -50,6 +57,7 @@ public class PolyList {
 
     /**
      * 多项式相加
+     *
      * @param polyList1
      * @param polyList2
      * @return
@@ -59,7 +67,7 @@ public class PolyList {
         PolyNode node2 = polyList2.headNode.next;
         PolyList resultPolyList = new PolyList();
 
-        while (node1 != null && node2 !=null) {
+        while (node1 != null && node2 != null) {
             int expn1 = node1.expn;
             int expn2 = node2.expn;
             int coef1 = node1.coef;
@@ -97,16 +105,36 @@ public class PolyList {
 
     /**
      * 多项式相乘
-     * @param polyList1
-     * @param polyList2
-     * @return
+     *
+     * @param polyList1 多项式1
+     * @param polyList2 多项式2
+     * @return 结果多项式
      */
     public static PolyList multiplyPoly(PolyList polyList1, PolyList polyList2) {
-        return null;
+        PolyNode node1 = polyList1.headNode.next;
+        PolyList resultPolyList = new PolyList();
+        while (node1 != null) {
+            resultPolyList = addPoly(resultPolyList, mutiplyPoly(node1, polyList2));
+            node1 = node1.next;
+        }
+        return resultPolyList;
+    }
+
+    private static PolyList mutiplyPoly(PolyNode mNode, PolyList polyList) {
+        PolyNode node = polyList.headNode.next;
+        while (node != null) {
+            // 系数相乘
+            node.coef *= mNode.coef;
+            // 指数相加
+            node.expn += mNode.expn;
+
+            node = node.next;
+        }
+        return polyList;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder sb = new StringBuilder();
         PolyNode node = headNode.next;
         while (node != null) {
@@ -120,10 +148,10 @@ public class PolyList {
     /**
      * 根据题目要求打印
      */
-    public void print(){
+    public void print() {
         PolyNode node = headNode.next;
         StringBuilder sb = new StringBuilder();
-        while (node!=null) {
+        while (node != null) {
             sb.append(node.coef).append(" ").append(node.expn).append(" ");
             node = node.next;
         }
