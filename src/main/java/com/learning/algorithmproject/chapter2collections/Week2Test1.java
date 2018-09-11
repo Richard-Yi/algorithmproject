@@ -55,7 +55,7 @@ public class Week2Test1 {
         for (int i = 0; i < k; i++) {
             coef = in.nextInt();
             expn = in.nextInt();
-            polyList1.add(coef, expn);
+            polyList2.add(coef, expn);
         }
         // 多项式相加
         PolyList.addPoly(polyList1, polyList2).print();

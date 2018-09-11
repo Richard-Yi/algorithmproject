@@ -114,23 +114,20 @@ public class PolyList {
         PolyNode node1 = polyList1.headNode.next;
         PolyList resultPolyList = new PolyList();
         while (node1 != null) {
-            resultPolyList = addPoly(resultPolyList, mutiplyPoly(node1, polyList2));
+            resultPolyList = addPoly(resultPolyList, multiplyPoly(node1, polyList2));
             node1 = node1.next;
         }
         return resultPolyList;
     }
 
-    private static PolyList mutiplyPoly(PolyNode mNode, PolyList polyList) {
+    private static PolyList multiplyPoly(PolyNode mNode, PolyList polyList) {
         PolyNode node = polyList.headNode.next;
+        PolyList resultPolyList = new PolyList();
         while (node != null) {
-            // 系数相乘
-            node.coef *= mNode.coef;
-            // 指数相加
-            node.expn += mNode.expn;
-
+            resultPolyList.add(node.coef * mNode.coef, node.expn + mNode.expn);
             node = node.next;
         }
-        return polyList;
+        return resultPolyList;
     }
 
     @Override
@@ -151,9 +148,14 @@ public class PolyList {
     public void print() {
         PolyNode node = headNode.next;
         StringBuilder sb = new StringBuilder();
-        while (node != null) {
-            sb.append(node.coef).append(" ").append(node.expn).append(" ");
-            node = node.next;
+        if (node == null) {
+            // 零多项式
+            sb.append(0).append(" ").append(0);
+        } else {
+            while (node != null) {
+                sb.append(node.coef).append(" ").append(node.expn).append(" ");
+                node = node.next;
+            }
         }
         System.out.println(sb.substring(0, sb.length() - 1));
     }
