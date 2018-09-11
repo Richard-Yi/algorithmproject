@@ -200,10 +200,15 @@ class PolyList {
         StringBuilder sb = new StringBuilder();
         if (node == null) {
             // 零多项式
-            sb.append(0).append(" ").append(0);
+            sb.append(0).append(" ").append(0).append(" ");
         } else {
             while (node != null) {
-                sb.append(node.coef).append(" ").append(node.expn).append(" ");
+                if (node.coef == 0) {
+                    // 系数为0时不输出 这一项
+                    continue;
+                } else {
+                    sb.append(node.coef).append(" ").append(node.expn).append(" ");
+                }
                 node = node.next;
             }
         }
