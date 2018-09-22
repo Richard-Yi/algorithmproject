@@ -28,7 +28,7 @@
 ```java
 public interface Collection<E> extends Iterable<E> {
 
-    int size();
+    int capacity();
     boolean isEmpty();
     void clear();
     boolean contains(Object o);
@@ -111,7 +111,7 @@ public interface Iterator<E> {
 1. `MyArrayList` 将保持基础数组，数组的容量，以及存储在MyArrayList中的当前项数。
 2. `MyArrayList` 将提供一种机制以改变基础数组的容量。通过获得一个新数组，将老数组拷贝到新数组中来改变数组的容量，允许虚拟机回收老数组。
 3. `MyArrayList` 将提供`get`和`set`的实现。
-4. `MyArrayList` 将提供基本的例程，如`size`、`isEmpty`和`clear`，他们是典型的单行程序；还提供`remove`，以及两种不同版本的add。如果数组大小和容量相同，那么这两个add例程将会增加容量
+4. `MyArrayList` 将提供基本的例程，如`capacity`、`isEmpty`和`clear`，他们是典型的单行程序；还提供`remove`，以及两种不同版本的add。如果数组大小和容量相同，那么这两个add例程将会增加容量
 5. `MyArrayList` 将提供一个实现`Iterator`接口的类。这个类将存储迭代序列中的下一项的下标，并提供`next`、`hasNext`和`remove`等方法的实现。MyArrayList的迭代器方法直接返回实现`Iterator`接口的该类的新构造的实例
 
 

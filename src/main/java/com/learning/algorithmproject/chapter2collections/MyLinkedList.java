@@ -62,7 +62,7 @@ public class MyLinkedList<E> implements Iterable<E> {
 
 
     /**
-     * size() 例程
+     * capacity() 例程
      *
      * @return 表大小
      */
@@ -145,7 +145,7 @@ public class MyLinkedList<E> implements Iterable<E> {
     }
 
     /**
-     * 获得指定index位置的节点 index 必须是介于0-size()-1之间
+     * 获得指定index位置的节点 index 必须是介于0-capacity()-1之间
      *
      * @param index 搜索位置
      * @return 对应节点
